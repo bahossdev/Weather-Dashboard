@@ -4,34 +4,39 @@ let inputText = document.querySelector('#cityName')
 
 $(document).ready(function () {
     //Event Handler for the Search Button
-    $('#searchBTN').on('click', function () {
-        event.preventDefault();
+    $('#searchBTN').on('click ', search);
+    $('#cityName').on('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            search();
+        }
+    })
+       function search () {
+       event.preventDefault();
         let cityName = inputText.value;
         if (!cityName) {
             alert('Please type a city name!')
         } else {
             saveCities(cityName);
-            getWeatherInfo();
-            getForecastInfo();
-            // document.querySelector('#cityName').textContent = ''
+            getWeatherInfo(cityName);
+            getForecastInfo(cityName);
+            $('#cityName').val('');
+            addNewCities(cityName);
         };
-    })
-    //active for enter as well
-    //inputtext clean up!
-    //ensure the functions will run with cityBTN
+    }
 
     //Event Handler for Saved Cities
-    // $(document).on('click', '.cityBTN', function (event) {
-    //     let selectedCity = $(event.target);
-    //     let clickedCity = selectedCity.text();
-    //     console.log(clickedCity);
-    //     getWeatherInfo(selectedCity);
-    //     getForecastInfo(selectedCity);
-    // })
+    $(document).on('click', '.cityBTN', function (event) {
+        let selectedCity = $(event.target);
+        let clickedCity = selectedCity.text();
+        console.log(clickedCity);
+        getWeatherInfo(clickedCity);
+        getForecastInfo(clickedCity);
+    })
 
     // Fetch data for Current Weather
-    function getWeatherInfo() {
-        let city = inputText.value;
+    function getWeatherInfo(city) {
+        // city = inputText.value;
         let APIKey = '3efeb6217d0973dac8d0cf930348a61f';
         let requsetUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+ city + '&limit=5&appid=' + APIKey + '&units=metric';
         fetch(requsetUrl)
@@ -51,8 +56,8 @@ $(document).ready(function () {
     };
 
     // Fetch data for 5-day Forecast
-    function getForecastInfo() {
-        let city = inputText.value;
+    function getForecastInfo(city) {
+        // city = inputText.value;
         let APIKey = '3efeb6217d0973dac8d0cf930348a61f';
         let requsetUrl = 'https://api.openweathermap.org/data/2.5/forecast?q='+ city + '&limit=5&appid=' + APIKey + '&units=metric';
         fetch(requsetUrl)
@@ -84,10 +89,12 @@ $(document).ready(function () {
         let temperature = info.main.temp;
         let wind = info.wind.speed;
         let humidity = info.main.humidity;
+        let weather = info.weather[0].main;
         let iconCode = info.weather[0].icon;
         let iconUrl = getIconUrl(iconCode);
 
         document.getElementById('city-date').innerHTML = cityName + ', ' + country + ', ' + today;
+        document.getElementById('weather-today').innerHTML =  weather;
         document.getElementById('temp-today').innerHTML = 'Temperature: ' + temperature + ' °C';
         document.getElementById('wind-today').innerHTML =  'Wind: ' + wind + ' MPH';
         document.getElementById('humidity-today').innerHTML = 'Humidity: ' + humidity + ' %';
@@ -96,16 +103,19 @@ $(document).ready(function () {
 
     // Display the 5-day Weather Forecast
     function displayForecast(data){
-        for (let i = 0; i < 40; i = i + 8) {
-        let date = data.list[i].dt_txt.split(' ')[0];
+        for (let i = 7; i < 40; i = i + 8) {
+        let dateDash = data.list[i].dt_txt.split(' ')[0];
+        let date = dayjs(dateDash).format('YYYY/MM/DD');
         let temperature = data.list[i].main.temp;
         let wind = data.list[i].wind.speed;
         let humidity = data.list[i].main.humidity;
+        let weather = data.list[i].weather[0].main;
         let iconCode = data.list[i].weather[0].icon;
         let iconUrl = getIconUrl(iconCode);
 
         $(`#date${i}`).html(`${date}`);
-        $(`#temp${i}`).html(`Temperature: ${temperature} °C`);
+        $(`#weather${i}`).html(`${weather}`);
+        $(`#temp${i}`).html(`Temp: ${temperature} °C`);
         $(`#wind${i}`).html(`Wind: ${wind} MPH`);
         $(`#humidity${i}`).html(`Humidity: ${humidity} %`);
         $(`#weather-icon${i}`).attr('src', iconUrl);
@@ -114,22 +124,32 @@ $(document).ready(function () {
 
     // Retreive Saved Cities
     function getCities() {
-        let cities = JSON.parse(localStorage.getItem('#cityName')) || [];
+        let allCities = JSON.parse(localStorage.getItem('#cityName')) || [];
+        let cities = allCities.slice(0, 10);
+        console.log(cities);
         // loop through cities
         for (city of cities) {
-            let cityEl = `<button class='cityBTN'>${city}</button>`;
+            let capCity = city.charAt(0).toUpperCase() + city.slice(1);
+            let cityEl = `<button class='cityBTN'>${capCity}</button>`;
             document.getElementById('cityList').innerHTML += cityEl;
         }
     }
     getCities();
 
+    // Dynamically add the new city to the list
+    function addNewCities(city){
+        let capCity = city.charAt(0).toUpperCase() + city.slice(1);
+        let cityEl = `<button class='cityBTN'>${capCity}</button>`;
+        document.getElementById('cityList').innerHTML += cityEl;
+    }
+    
     // Store City Names (removing repetitive names)
     function saveCities(newCity) {
-        const cities = JSON.parse(localStorage.getItem('#cityName')) || [];
+        let cities = JSON.parse(localStorage.getItem('#cityName')) || [];
         let cityExists = false;
         for (city of cities) {
-            // if (toUpperCase(city) === toUpperCase(newCity)) {
-                if (city === newCity) {
+                if (city.toUpperCase() === newCity.toUpperCase()) {
+                // if (city === newCity) {
                 cityExists = true;
                 break;
             }
@@ -139,8 +159,4 @@ $(document).ready(function () {
             localStorage.setItem('#cityName', JSON.stringify(cities));
         }
     }
-
-    // function cityReload() {
-    //     let 
-    // }
 })

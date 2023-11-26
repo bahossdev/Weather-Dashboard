@@ -40,10 +40,11 @@
       <!-- today -->
       <div class="row col-9 mx-auto">
         <div class="row card col-9">
-          <div class="card-body today">
-            <h5 class="card-title" id="city-date"></h5>
+          <div class="card-body today"  style="width: 100%">
+            <h2 class="card-title" id="city-date"></h2>
             <img id="weather-icon" src="" alt="Weather icon">
             <ul class="infoList"></ul>
+            <li id="weather-today"></li>
             <li id="temp-today"></li>
             <li id="wind-today"></li>
             <li id="humidity-today"></li>
@@ -51,54 +52,64 @@
         </div>
       </div>
       <!-- 5-day forecast cards -->
-        <section class="container d-flex column">
-            <div class="row col-9 mx-auto">
-              <h2>5-Day Weather Forecast:</h2>
-                <div class="card-deck d-flex column">
+        <section class="container">
+            <div class="row col-9 mx-auto"   style="width: 100%">
+              <h3>5-Day Weather Forecast:</h3>
+                <div class="card-deck d-flex column"  style="width: 100%">
 
-                  <div class="card">
-                      <h5 class="card-title date" id="date0"></h5>
-                      <img id="weather-icon0" alt="Weather Icon">
-                      <ul class="infoList" id="infolist0"></ul>
-                      <li id="temp0"></li>
-                      <li id="wind0"></li>
-                      <li id="humidity0"></li>
+                  <!-- Day 1 -->
+                  <div class="card p-2 m-2" style="width: 35%">
+                      <h5 class="card-title date" id="date7"></h5>
+                      <img id="weather-icon7" alt="Weather Icon">
+                      <ul class="infoList" id="infolist7"></ul>
+                      <li id="weather7"></li>
+                      <li id="temp7"></li>
+                      <li id="wind7"></li>
+                      <li id="humidity7"></li>
                   </div>
 
-                  <div class="card">
-                      <h5 class="card-title date" id="date8"></h5>
-                      <img id="weather-icon8" alt="Weather Icon">
-                      <ul class="infoList" id="infolist8"></ul>
-                      <li id="temp8"></li>
-                      <li id="wind8"></li>
-                      <li id="humidity8"></li>
+                  <!-- Day 2 -->
+                  <div class="card p-2 m-2" style="width: 35%">
+                      <h5 class="card-title date" id="date15"></h5>
+                      <img id="weather-icon15" alt="Weather Icon">
+                      <ul class="infoList" id="infolist15"></ul>
+                      <li id="weather15"></li>
+                      <li id="temp15"></li>
+                      <li id="wind15"></li>
+                      <li id="humidity15"></li>
                   </div>
 
-                  <div class="card">
-                      <h5 class="card-title date" id="date16"></h5>
-                      <img id="weather-icon16" alt="Weather Icon">
-                      <ul class="infoList" id="infolist16"></ul>
-                      <li id="temp16"></li>
-                      <li id="wind16"></li>
-                      <li id="humidity16"></li>
+                  <!-- Day 3 -->
+                  <div class="card p-2 m-2" style="width: 35%">
+                      <h5 class="card-title date" id="date23"></h5>
+                      <img id="weather-icon23" alt="Weather Icon">
+                      <ul class="infoList" id="infolist23"></ul>
+                      <li id="weather23"></li>
+                      <li id="temp23"></li>
+                      <li id="wind23"></li>
+                      <li id="humidity23"></li>
                   </div>
 
-                  <div class="card">
-                      <h5 class="card-title date" id="date24"></h5>
-                      <img id="weather-icon24" alt="Weather Icon">
-                      <ul class="infoList" id="infolist24"></ul>
-                      <li id="temp24"></li>
-                      <li id="wind24"></li>
-                      <li id="humidity24"></li>
+                  <!-- Day 4 -->
+                  <div class="card p-2 m-2" style="width: 35%">
+                      <h5 class="card-title date" id="date31"></h5>
+                      <img id="weather-icon31" alt="Weather Icon">
+                      <ul class="infoList" id="infolist31"></ul>
+                      <li id="weather31"></li>
+                      <li id="temp31"></li>
+                      <li id="wind31"></li>
+                      <li id="humidity31"></li>
                   </div>
 
-                  <div class="card">
-                      <h5 class="card-title date" id="date32"></h5>
-                      <img id="weather-icon32" alt="Weather Icon">
-                      <ul class="infoList" id="infolist32"></ul>
-                      <li id="temp32"></li>
-                      <li id="wind32"></li>
-                      <li id="humidity32"></li>
+                  <!-- Day 5 -->
+                  <div class="card p-2 m-2" style="width: 35%">
+                      <h5 class="card-title date" id="date39"></h5>
+                      <img id="weather-icon39" alt="Weather Icon">
+                      <ul class="infoList" id="infolist39"></ul>
+                      <li id="weather39"></li>
+                      <li id="temp39"></li>
+                      <li id="wind39"></li>
+                      <li id="humidity39"></li>
                   </div>
                 </div>
             </div>
