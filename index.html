@@ -20,17 +20,16 @@
   </header>
 
   <main class="container d-flex column">
+    <!-- Search sidebar -->
+    <section class="mt-10">
 
-    <section class="my-auto mt-10">
-
-      <div class="card row col-3 " style="width: 18rem;">
+      <div class="card row col-3" style="width: 18rem;">
         <div class="card-body p-3">
           <h5 class="card-title">Search for a City:</h5>
           <input type="text" style="width: 100%;" id="cityName" placeholder="Type here..."></input>
           <a href="#" type="button" class="btn btn-primary btn-block" id="searchBTN" style="width: 100%;">Search</a>
-
           <ul class="list-group list-group-flush my-3" id="cityList">
-            <li class="list-group-item cityBTN "> </li>
+            <li class="list-group-item cityBTN"> </li>
           </ul>
         </div>
       </div>
@@ -38,50 +37,73 @@
     </section>
 
     <section>
+      <!-- today -->
       <div class="row col-9 mx-auto">
-      <div class="row card col-9" >
-        <div class="card-body today">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">city and date comes here</p>
+        <div class="row card col-9">
+          <div class="card-body today">
+            <h5 class="card-title" id="city-date"></h5>
+            <img id="weather-icon" src="" alt="Weather icon">
+            <ul class="infoList"></ul>
+            <li id="temp-today"></li>
+            <li id="wind-today"></li>
+            <li id="humidity-today"></li>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row col-9 mx-auto">
-      <h2>5-Day Weather Forecast:</h2>
-    <div class="card-deck d-flex column">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Day2</h5>
-          <p class="card-text"></p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Day3</h5>
-          <p class="card-text"></p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Day4</h5>
-          <p class="card-text"></p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Day4</h5>
-          <p class="card-text"></p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Day4</h5>
-          <p class="card-text"></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  </section>
+      <!-- 5-day forecast cards -->
+        <section class="container d-flex column">
+            <div class="row col-9 mx-auto">
+              <h2>5-Day Weather Forecast:</h2>
+                <div class="card-deck d-flex column">
+
+                  <div class="card">
+                      <h5 class="card-title date" id="date0"></h5>
+                      <img id="weather-icon0" alt="Weather Icon">
+                      <ul class="infoList" id="infolist0"></ul>
+                      <li id="temp0"></li>
+                      <li id="wind0"></li>
+                      <li id="humidity0"></li>
+                  </div>
+
+                  <div class="card">
+                      <h5 class="card-title date" id="date8"></h5>
+                      <img id="weather-icon8" alt="Weather Icon">
+                      <ul class="infoList" id="infolist8"></ul>
+                      <li id="temp8"></li>
+                      <li id="wind8"></li>
+                      <li id="humidity8"></li>
+                  </div>
+
+                  <div class="card">
+                      <h5 class="card-title date" id="date16"></h5>
+                      <img id="weather-icon16" alt="Weather Icon">
+                      <ul class="infoList" id="infolist16"></ul>
+                      <li id="temp16"></li>
+                      <li id="wind16"></li>
+                      <li id="humidity16"></li>
+                  </div>
+
+                  <div class="card">
+                      <h5 class="card-title date" id="date24"></h5>
+                      <img id="weather-icon24" alt="Weather Icon">
+                      <ul class="infoList" id="infolist24"></ul>
+                      <li id="temp24"></li>
+                      <li id="wind24"></li>
+                      <li id="humidity24"></li>
+                  </div>
+
+                  <div class="card">
+                      <h5 class="card-title date" id="date32"></h5>
+                      <img id="weather-icon32" alt="Weather Icon">
+                      <ul class="infoList" id="infolist32"></ul>
+                      <li id="temp32"></li>
+                      <li id="wind32"></li>
+                      <li id="humidity32"></li>
+                  </div>
+                </div>
+            </div>
+        </section>
+    </section>
   </main>
 
   <footer>
