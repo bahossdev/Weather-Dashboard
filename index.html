@@ -10,6 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Sofia&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
@@ -21,104 +24,111 @@
 
   <main class="container d-flex column">
     <!-- Search sidebar -->
-    <section class="mt-10">
+    <section class=" row mt-10 sidebar">
 
-      <div class="card row col-3" style="width: 18rem;">
+      <div class="card row col-12 col-md-3" style="width: 18rem;">
         <div class="card-body p-3">
-          <h5 class="card-title">Search for a City:</h5>
+          <h4 class="card-title">Search for a City:</h4>
           <input type="text" style="width: 100%;" id="cityName" placeholder="Type here..."></input>
-          <a href="#" type="button" class="btn btn-primary btn-block" id="searchBTN" style="width: 100%;">Search</a>
+          <p>Use comma to add country, e.g., London, CA</p>
+          <a href="#" type="button" class="btn btn-primary btn-block" id="searchBTN" style="width: 100%;">Search 🌦️</a>
           <ul class="list-group list-group-flush my-3" id="cityList">
-            <li class="list-group-item cityBTN"> </li>
+            <!-- <li class="list-group-item cityBTN"> </li> -->
           </ul>
         </div>
       </div>
 
     </section>
 
-    <section>
+    <section id='foreCast' class=' row col-9 hidden'>
       <!-- today -->
-      <div class="row col-9 mx-auto">
-        <div class="row card col-9">
-          <div class="card-body today"  style="width: 100%">
-            <h2 class="card-title" id="city-date"></h2>
-            <img id="weather-icon" src="" alt="Weather icon">
-            <ul class="infoList"></ul>
-            <li id="weather-today"></li>
-            <li id="temp-today"></li>
-            <li id="wind-today"></li>
-            <li id="humidity-today"></li>
+      <!-- <div class="row col-9 mx-auto today"> -->
+      <!-- <div class="row card col-9"> -->
+      <div class="card-body today">
+        <h2 class="card-title" id="city-date"></h2>
+        <img id="weather-icon" src="" alt="Weather icon">
+        <ul class="list-unstyled">
+          <li id="weather-today"></li>
+          <li id="temp-today"></li>
+          <li id="wind-today"></li>
+          <li id="humidity-today"></li>
+        </ul>
+      </div>
+      <!-- </div> -->
+      <!-- </div> -->
+      <!-- 5-day forecast cards -->
+      <section class="container">
+        <div class="row col-12 col-md-12 mx-auto p-0" style="width: 100%">
+          <h3>5-Day Weather Forecast:</h3>
+          <div class="card-deck d-flex column">
+
+            <!-- Day 1 -->
+            <div class="card p-2 m-2">
+              <h4 class="card-title date" id="date7"></h4>
+              <img id="weather-icon7" alt="Weather Icon">
+              <ul class=" list-unstyled" id="7">
+                <li id="weather7"></li>
+                <li id="temp7"></li>
+                <li id="wind7"></li>
+                <li id="humidity7"></li>
+              </ul>
+            </div>
+
+            <!-- Day 2 -->
+            <div class="card p-2 m-2">
+              <h4 class="card-title date" id="date15"></h4>
+              <img id="weather-icon15" alt="Weather Icon">
+              <ul class=" list-unstyled" id="15">
+                <li id="weather15"></li>
+                <li id="temp15"></li>
+                <li id="wind15"></li>
+                <li id="humidity15"></li>
+              </ul>
+            </div>
+
+            <!-- Day 3 -->
+            <div class="card p-2 m-2">
+              <h4 class="card-title date" id="date23"></h4>
+              <img id="weather-icon23" alt="Weather Icon">
+              <ul class=" list-unstyled" id="23">
+                <li id="weather23"></li>
+                <li id="temp23"></li>
+                <li id="wind23"></li>
+                <li id="humidity23"></li>
+              </ul>
+            </div>
+
+            <!-- Day 4 -->
+            <div class="card p-2 m-2">
+              <h4 class="card-title date" id="date31"></h4>
+              <img id="weather-icon31" alt="Weather Icon">
+              <ul class=" list-unstyled" id="31">
+                <li id="weather31"></li>
+                <li id="temp31"></li>
+                <li id="wind31"></li>
+                <li id="humidity31"></li>
+              </ul>
+            </div>
+
+            <!-- Day 5 -->
+            <div class="card p-2 m-2">
+              <h4 class="card-title date" id="date39"></h4>
+              <img id="weather-icon39" alt="Weather Icon">
+              <ul class=" list-unstyled" id="39">
+                <li id="weather39"></li>
+                <li id="temp39"></li>
+                <li id="wind39"></li>
+                <li id="humidity39"></li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- 5-day forecast cards -->
-        <section class="container">
-            <div class="row col-9 mx-auto"   style="width: 100%">
-              <h3>5-Day Weather Forecast:</h3>
-                <div class="card-deck d-flex column"  style="width: 100%">
-
-                  <!-- Day 1 -->
-                  <div class="card p-2 m-2" style="width: 35%">
-                      <h5 class="card-title date" id="date7"></h5>
-                      <img id="weather-icon7" alt="Weather Icon">
-                      <ul class="infoList" id="infolist7"></ul>
-                      <li id="weather7"></li>
-                      <li id="temp7"></li>
-                      <li id="wind7"></li>
-                      <li id="humidity7"></li>
-                  </div>
-
-                  <!-- Day 2 -->
-                  <div class="card p-2 m-2" style="width: 35%">
-                      <h5 class="card-title date" id="date15"></h5>
-                      <img id="weather-icon15" alt="Weather Icon">
-                      <ul class="infoList" id="infolist15"></ul>
-                      <li id="weather15"></li>
-                      <li id="temp15"></li>
-                      <li id="wind15"></li>
-                      <li id="humidity15"></li>
-                  </div>
-
-                  <!-- Day 3 -->
-                  <div class="card p-2 m-2" style="width: 35%">
-                      <h5 class="card-title date" id="date23"></h5>
-                      <img id="weather-icon23" alt="Weather Icon">
-                      <ul class="infoList" id="infolist23"></ul>
-                      <li id="weather23"></li>
-                      <li id="temp23"></li>
-                      <li id="wind23"></li>
-                      <li id="humidity23"></li>
-                  </div>
-
-                  <!-- Day 4 -->
-                  <div class="card p-2 m-2" style="width: 35%">
-                      <h5 class="card-title date" id="date31"></h5>
-                      <img id="weather-icon31" alt="Weather Icon">
-                      <ul class="infoList" id="infolist31"></ul>
-                      <li id="weather31"></li>
-                      <li id="temp31"></li>
-                      <li id="wind31"></li>
-                      <li id="humidity31"></li>
-                  </div>
-
-                  <!-- Day 5 -->
-                  <div class="card p-2 m-2" style="width: 35%">
-                      <h5 class="card-title date" id="date39"></h5>
-                      <img id="weather-icon39" alt="Weather Icon">
-                      <ul class="infoList" id="infolist39"></ul>
-                      <li id="weather39"></li>
-                      <li id="temp39"></li>
-                      <li id="wind39"></li>
-                      <li id="humidity39"></li>
-                  </div>
-                </div>
-            </div>
-        </section>
+      </section>
     </section>
   </main>
 
   <footer>
-
+    <p> © Bahossdev 2023 </p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

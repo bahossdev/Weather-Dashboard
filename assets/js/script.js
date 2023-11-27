@@ -1,16 +1,21 @@
+
+// Variables for the search button and input text
 let searchBTNEl = document.querySelector('#searchBTN')
 let inputText = document.querySelector('#cityName')
 
-
+// Run if ready
 $(document).ready(function () {
     //Event Handler for the Search Button
     $('#searchBTN').on('click ', search);
+
+    // Event Handler for Enter key in the input field
     $('#cityName').on('keydown', function(event) {
         if (event.key === 'Enter') {
             event.preventDefault();
             search();
         }
     })
+    // Function to call functions for fetch, storage and adding the new city
        function search () {
        event.preventDefault();
         let cityName = inputText.value;
@@ -21,7 +26,8 @@ $(document).ready(function () {
             getWeatherInfo(cityName);
             getForecastInfo(cityName);
             $('#cityName').val('');
-            addNewCities(cityName);
+            addNewCity(cityName);
+            $('#foreCast').removeClass('hidden')
         };
     }
 
@@ -32,11 +38,11 @@ $(document).ready(function () {
         console.log(clickedCity);
         getWeatherInfo(clickedCity);
         getForecastInfo(clickedCity);
+        $('#foreCast').removeClass('hidden')
     })
 
     // Fetch data for Current Weather
     function getWeatherInfo(city) {
-        // city = inputText.value;
         let APIKey = '3efeb6217d0973dac8d0cf930348a61f';
         let requsetUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+ city + '&limit=5&appid=' + APIKey + '&units=metric';
         fetch(requsetUrl)
@@ -83,6 +89,8 @@ $(document).ready(function () {
 
     // Display the Current Weather
     function displayWeather(info){
+
+        // Extract relevant information from the API response
         let cityName = info.name;
         let country = info.sys.country;
         let today = dayjs().format('YYYY/MM/DD');
@@ -93,6 +101,7 @@ $(document).ready(function () {
         let iconCode = info.weather[0].icon;
         let iconUrl = getIconUrl(iconCode);
 
+        // Update the HTML elements with the extracted information
         document.getElementById('city-date').innerHTML = cityName + ', ' + country + ', ' + today;
         document.getElementById('weather-today').innerHTML =  weather;
         document.getElementById('temp-today').innerHTML = 'Temperature: ' + temperature + ' °C';
@@ -113,6 +122,7 @@ $(document).ready(function () {
         let iconCode = data.list[i].weather[0].icon;
         let iconUrl = getIconUrl(iconCode);
 
+        // Update HTML elements dynamically for each forecast day
         $(`#date${i}`).html(`${date}`);
         $(`#weather${i}`).html(`${weather}`);
         $(`#temp${i}`).html(`Temp: ${temperature} °C`);
@@ -127,7 +137,7 @@ $(document).ready(function () {
         let allCities = JSON.parse(localStorage.getItem('#cityName')) || [];
         let cities = allCities.slice(0, 10);
         console.log(cities);
-        // loop through cities
+        // loop through saved cities and display item
         for (city of cities) {
             let capCity = city.charAt(0).toUpperCase() + city.slice(1);
             let cityEl = `<button class='cityBTN'>${capCity}</button>`;
@@ -137,13 +147,13 @@ $(document).ready(function () {
     getCities();
 
     // Dynamically add the new city to the list
-    function addNewCities(city){
+    function addNewCity(city){
         let capCity = city.charAt(0).toUpperCase() + city.slice(1);
         let cityEl = `<button class='cityBTN'>${capCity}</button>`;
         document.getElementById('cityList').innerHTML += cityEl;
     }
     
-    // Store City Names (removing repetitive names)
+    // Store City Names in local storage, avoiding repetitive names
     function saveCities(newCity) {
         let cities = JSON.parse(localStorage.getItem('#cityName')) || [];
         let cityExists = false;
@@ -159,4 +169,5 @@ $(document).ready(function () {
             localStorage.setItem('#cityName', JSON.stringify(cities));
         }
     }
+
 })

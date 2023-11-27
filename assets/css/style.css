@@ -1,8 +1,10 @@
 main {
     margin-top: 2%;
-    flex-wrap: flex;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
+
 h1 {
     background-image: url('../images/weather-background.jpg');
     background-size: cover;
@@ -17,18 +19,241 @@ h1 {
     text-shadow: 1px 2px 5px rgb(126, 100, 50);
 }
 
-ul {
-    list-style: none !important;
+h2 {
+    font-size: 2.3rem;
+    font-weight: 900;
+    font-family: 'Exo 2', sans-serif;
+    text-shadow: 1px 2px 5px white;
+}
+
+h3 {
+    font-family: 'Sofia', cursive;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    text-shadow: 1px 2px 3px rgb(130, 106, 62);
+    color: navy;
+    padding-top: 25px;
+}
+
+h4 {
+    font-family: sans-serif;
+    font-size: 1.2rem;
+}
+
+::placeholder {
+    font-style: italic;
+    font-size: small;
+}
+
+p {
+    font-style: italic;
+    font-size: smaller;
+}
+
+.container {
+    display: flex;
+}
+
+#foreCast {
+    flex: 1;
+    margin-left: 20px;
 }
 
 #cityName {
     margin-bottom: 10px;
 }
 
+#searchBTN {
+    background-color: rgb(4, 65, 86);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px grey;
+}
+
+#searchBTN:hover {
+    background-color: rgb(51, 119, 142);
+    padding: 7px;
+}
+
+.cityBTN {
+    margin-top: 5px;
+    border-radius: 5px;
+    padding: 2px;
+    background-color: rgba(169, 249, 249, 0.796);
+    border: none;
+    box-shadow: 1px 1px 3px grey;
+}
+
+.cityBTN:hover {
+    padding: 4px;
+    background-color: rgb(77, 223, 213);
+}
+
 img {
     width: 4rem;
 }
 
-.sideColumn {
+.today {
+    font-family: sans-serif;
+    font-weight: 600;
+    color: navy;
+    background-image: url('../images/gradient.jpg');
+    background-size: cover;
+    width: 95%;
+    padding: 20px;
+    margin-left: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
+}
+
+.card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.card-deck {
+    justify-content: space-between;
+    padding: 0px;
+}
+
+.card-deck .card {
+    background-image: url('../images/cloud.jpg');
+    color: white;
+    margin-bottom: 20px;
+    padding: 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: smaller;
+}
+
+.card-deck .card ul {
+    margin: 0;
+    padding: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+    background-image: url('../images/weather-background.jpg');
+    background-size: cover;
+    height: 50px;
+    font-family:sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    line-height: 3rem;
+    color: rgb(4, 65, 86);
+}
+
+
+
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        height: 100px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+        padding-top: 15px;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+        padding-top: 2px;
+    }
+
+    .today {
+        font-size: 1rem;
+        padding: 18px;
+    }
+
+    .sidebar {
+        margin: auto;
+        display: block;
+    }
+
+    .card {
+        padding: 8px;
+    }
+
+    .card-deck {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .card-deck .card {
+        width: 100%;
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+
+    #foreCast {
+        width: 100%;
+        margin: auto;
+    }
+}
+
+/* Media query for screens smaller than 480px */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.5rem;
+        height: 80px;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+        padding-top: 10px;
+    }
+
+    h4 {
+        font-size: 1.1rem;
+        padding-top: 2px;
+    }
+
+    .today {
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    .sidebar {
+        margin: auto;
+    }
+
+    .card {
+        padding: 5px;
+    }
+
+    .card-deck {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .card-deck .card {
+        width: 100%;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    #foreCast {
+        margin-left: 0;
+        margin-top: 20px;
+    }
 }
