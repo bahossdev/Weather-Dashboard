@@ -5,7 +5,7 @@ let inputText = document.querySelector('#cityName')
 
 // Run if ready
 $(document).ready(function () {
-    //Event Handler for the Search Button
+    // Event Handler for the Search Button
     $('#searchBTN').on('click ', search);
 
     // Event Handler for Enter key in the input field
@@ -15,6 +15,7 @@ $(document).ready(function () {
             search();
         }
     })
+    
     // Function to call functions for fetch, storage and adding the new city
     function search() {
         event.preventDefault();
@@ -22,16 +23,14 @@ $(document).ready(function () {
         if (!cityName) {
             alert('Please type a city name!')
         } else {
-            saveCities(cityName);
             getWeatherInfo(cityName);
             getForecastInfo(cityName);
             $('#cityName').val('');
-            addNewCity(cityName);
             $('#foreCast').removeClass('hidden')
         };
     }
 
-    //Event Handler for Saved Cities
+    // Event Handler for Saved Cities
     $(document).on('click', '.cityBTN', function (event) {
         let selectedCity = $(event.target);
         let clickedCity = selectedCity.text();
@@ -51,6 +50,7 @@ $(document).ready(function () {
                     response.json().then(function (info) {
                         console.log(info);
                         displayWeather(info);
+                        saveCities(city);
                     });
                 } else {
                     alert('Error: ' + response.statusText);
@@ -137,7 +137,7 @@ $(document).ready(function () {
         let allCities = JSON.parse(localStorage.getItem('#cityName')) || [];
         let cities = allCities.slice(0, 10);
         console.log(cities);
-        // loop through saved cities and display item
+        // Loop through saved cities and display item
         for (city of cities) {
             let capCity = city.charAt(0).toUpperCase() + city.slice(1);
             let cityEl = `<button class='cityBTN'>${capCity}</button>`;
@@ -146,20 +146,12 @@ $(document).ready(function () {
     }
     getCities();
 
-    // Dynamically add the new city to the list
-    function addNewCity(city) {
-        let capCity = city.charAt(0).toUpperCase() + city.slice(1);
-        let cityEl = `<button class='cityBTN'>${capCity}</button>`;
-        document.getElementById('cityList').innerHTML += cityEl;
-    }
-
     // Store City Names in local storage, avoiding repetitive names
     function saveCities(newCity) {
         let cities = JSON.parse(localStorage.getItem('#cityName')) || [];
         let cityExists = false;
         for (city of cities) {
             if (city.toUpperCase() === newCity.toUpperCase()) {
-                // if (city === newCity) {
                 cityExists = true;
                 break;
             }
@@ -167,6 +159,11 @@ $(document).ready(function () {
         if (!cityExists) {
             cities.push(newCity);
             localStorage.setItem('#cityName', JSON.stringify(cities));
+
+            // Dynamically add the new city to the list (if it doesn't alraedy exist)
+            let capCity = newCity.charAt(0).toUpperCase() + newCity.slice(1);
+            let cityEl = `<button class='cityBTN'>${capCity}</button>`;
+            document.getElementById('cityList').innerHTML += cityEl;
         }
     }
 

@@ -1,21 +1,30 @@
+/* Variable for box-shadows */
 :root {
     --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
 }
 
+/* Control the visibility  */
+.hidden {
+    display: none;
+}
+
+/* Main section flex-box */
 main {
     margin-top: 2%;
-    display:block;
+    display: block;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
 }
 
+/* Header background */
 header {
     background-image: url('../images/weather-background.jpg');
     background-size: cover;
     height: 130px;
 }
 
+/* Fonts and headings */
 h1 {
     font-family: 'Sofia', cursive;
     font-size: 3.5rem;
@@ -45,7 +54,7 @@ h3 {
 
 h4 {
     font-family: sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 ::placeholder {
@@ -58,47 +67,15 @@ p {
     font-size: smaller;
 }
 
+/* Settings for boxes and cards */
 .container {
     display: flex;
 }
 
-#foreCast {
-    flex: 1;
-    margin-left: 20px;
-}
-
-#cityName {
-    margin-bottom: 10px;
-}
-
-#searchBTN {
-    background-color: rgb(4, 65, 86);
-    border: none;
-    border-radius: 5px;
-    box-shadow: var(--box-shadow);
-}
-
-#searchBTN:hover {
-    background-color: rgb(51, 119, 142);
-    padding: 7px;
-}
-
-.cityBTN {
-    margin-top: 5px;
-    border-radius: 5px;
-    padding: 2px;
-    background-color: rgba(169, 249, 249, 0.796);
-    border: none;
-    box-shadow: var(--box-shadow);
-}
-
-.cityBTN:hover {
-    padding: 4px;
-    background-color: rgb(77, 223, 213);
-}
-
-img {
-    width: 4rem;
+.card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
 }
 
 .today {
@@ -112,13 +89,15 @@ img {
     padding: 20px;
     border-radius: 15px;
     box-shadow:  var(--box-shadow);
-
 }
 
-.card {
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 10px;
+#foreCast {
+    flex: 1;
+    margin-left: 20px;
+}
+
+img {
+    width: 4rem;
 }
 
 .card-deck {
@@ -135,15 +114,38 @@ img {
     font-size: smaller;
 }
 
-.card-deck .card ul {
-    margin: 0;
-    padding: 0;
+/* Buttons styling and hover */
+#searchBTN {
+    background-color: rgb(4, 65, 86);
+    border: none;
+    border-radius: 5px;
+    box-shadow: var(--box-shadow);
 }
 
-.hidden {
-    display: none;
+#searchBTN:hover {
+    background-color: rgb(51, 119, 142);
+    padding: 7px;
 }
 
+#cityName {
+    margin-bottom: 10px;
+}
+
+.cityBTN {
+    margin-top: 5px;
+    border-radius: 5px;
+    padding: 2px;
+    background-color: rgba(169, 249, 249, 0.796);
+    border: none;
+    box-shadow: var(--box-shadow);
+}
+
+.cityBTN:hover {
+    padding: 4px;
+    background-color: rgb(77, 223, 213);
+}
+
+/* Footer */
 footer {
     display: inline-block;
     position: fixed;
@@ -163,6 +165,14 @@ footer p {
     color: rgb(4, 65, 86);
 }
 
+/* Media query for screens smaller than 1000px */
+@media (max-width: 1000px) {
+    .card-deck {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
 
 /* Media query for screens smaller than 768px */
 @media (max-width: 768px) {
