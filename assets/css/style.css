@@ -165,8 +165,8 @@ footer p {
     color: rgb(4, 65, 86);
 }
 
-/* Media query for screens smaller than 1000px */
-@media (max-width: 1000px) {
+/* Media query for screens smaller than 1024px */
+@media (max-width: 1024x) {
     .card-deck {
         flex-direction: row;
         flex-wrap: wrap;
@@ -271,7 +271,7 @@ footer p {
     }
 
     .card-deck .card {
-        width: 100%;
+        width: 100% !important;
         font-size: 1rem;
         margin-bottom: 10px;
     }
