@@ -15,7 +15,7 @@ $(document).ready(function () {
             search();
         }
     })
-    
+
     // Function to call functions for fetch, storage and adding the new city
     function search() {
         event.preventDefault();
@@ -34,7 +34,6 @@ $(document).ready(function () {
     $(document).on('click', '.cityBTN', function (event) {
         let selectedCity = $(event.target);
         let clickedCity = selectedCity.text();
-        console.log(clickedCity);
         getWeatherInfo(clickedCity);
         getForecastInfo(clickedCity);
         $('#foreCast').removeClass('hidden')
@@ -48,7 +47,6 @@ $(document).ready(function () {
             .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (info) {
-                        console.log(info);
                         displayWeather(info);
                         saveCities(city);
                     });
@@ -70,7 +68,6 @@ $(document).ready(function () {
             .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (data) {
-                        console.log(data);
                         displayForecast(data);
                     });
                 } else {
@@ -135,8 +132,8 @@ $(document).ready(function () {
     // Retreive Saved Cities
     function getCities() {
         let allCities = JSON.parse(localStorage.getItem('#cityName')) || [];
-        let cities = allCities.slice(0, 10);
-        console.log(cities);
+        let cities = allCities.slice(0, 10).reverse();
+        
         // Loop through saved cities and display item
         for (city of cities) {
             let capCity = city.charAt(0).toUpperCase() + city.slice(1);
@@ -157,7 +154,7 @@ $(document).ready(function () {
             }
         }
         if (!cityExists) {
-            cities.push(newCity);
+            cities.unshift(newCity);
             localStorage.setItem('#cityName', JSON.stringify(cities));
 
             // Dynamically add the new city to the list (if it doesn't alraedy exist)
