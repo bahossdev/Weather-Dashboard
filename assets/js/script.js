@@ -146,6 +146,10 @@ $(document).ready(function () {
     // Store City Names in local storage, avoiding repetitive names
     function saveCities(newCity) {
         let cities = JSON.parse(localStorage.getItem('#cityName')) || [];
+        if (cities.length >= 10) {
+            cities.pop();
+        }
+
         let cityExists = false;
         for (city of cities) {
             if (city.toUpperCase() === newCity.toUpperCase()) {
