@@ -33,17 +33,14 @@
           <p>Use comma to add country, e.g., London, CA</p>
           <a href="#" type="button" class="btn btn-primary btn-block" id="searchBTN" style="width: 100%;">Search 🌦️</a>
           <ul class="list-group list-group-flush my-3" id="cityList">
-            <!-- <li class="list-group-item cityBTN"> </li> -->
           </ul>
         </div>
       </div>
 
     </section>
 
-    <section id='foreCast' class=' row col-9 hidden'>
+    <section id='foreCast' class=' row col-9 col-md-6 hidden'>
       <!-- today -->
-      <!-- <div class="row col-9 mx-auto today"> -->
-      <!-- <div class="row card col-9"> -->
       <div class="card-body today">
         <h2 class="card-title" id="city-date"></h2>
         <img id="weather-icon" src="" alt="Weather icon">
@@ -54,10 +51,9 @@
           <li id="humidity-today"></li>
         </ul>
       </div>
-      <!-- </div> -->
-      <!-- </div> -->
+
       <!-- 5-day forecast cards -->
-      <section class="container">
+      <section class="container card">
         <div class="row col-12 col-md-12 mx-auto p-0" style="width: 100%">
           <h3>5-Day Weather Forecast:</h3>
           <div class="card-deck d-flex column">

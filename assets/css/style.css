@@ -1,14 +1,22 @@
+:root {
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
+}
+
 main {
     margin-top: 2%;
-    display: flex;
+    display:block;
     flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-between;
 }
 
-h1 {
+header {
     background-image: url('../images/weather-background.jpg');
     background-size: cover;
     height: 130px;
+}
+
+h1 {
     font-family: 'Sofia', cursive;
     font-size: 3.5rem;
     font-weight: bolder;
@@ -32,7 +40,7 @@ h3 {
     font-weight: bolder;
     text-shadow: 1px 2px 3px rgb(130, 106, 62);
     color: navy;
-    padding-top: 25px;
+    padding-top: 5px;
 }
 
 h4 {
@@ -67,7 +75,7 @@ p {
     background-color: rgb(4, 65, 86);
     border: none;
     border-radius: 5px;
-    box-shadow: 1px 1px 3px grey;
+    box-shadow: var(--box-shadow);
 }
 
 #searchBTN:hover {
@@ -81,7 +89,7 @@ p {
     padding: 2px;
     background-color: rgba(169, 249, 249, 0.796);
     border: none;
-    box-shadow: 1px 1px 3px grey;
+    box-shadow: var(--box-shadow);
 }
 
 .cityBTN:hover {
@@ -100,10 +108,10 @@ img {
     background-image: url('../images/gradient.jpg');
     background-size: cover;
     width: 95%;
+    margin-top: 10px;
     padding: 20px;
-    margin-left: 15px;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow:  var(--box-shadow);
 
 }
 
@@ -137,17 +145,23 @@ img {
 }
 
 footer {
+    display: inline-block;
+    position: fixed;
+    bottom: 0;
+    z-index: -2;
     background-image: url('../images/weather-background.jpg');
     background-size: cover;
     height: 50px;
-    font-family:sans-serif;
+    width: 100%;
+}
+
+footer p {
+    font-family: sans-serif;
     font-weight: bolder;
     text-align: center;
     line-height: 3rem;
     color: rgb(4, 65, 86);
 }
-
-
 
 
 /* Media query for screens smaller than 768px */
